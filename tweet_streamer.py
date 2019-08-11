@@ -99,14 +99,6 @@ class TweetAnalyzer():
 
 if __name__ == "__main__":
 
-	# hash_tag_list=['#KMJS']
-	# fetched_filename = "tweets.json"
-
-	# twitter_client = TwitterClient('mariachigamez')
-	# print(twitter_client.get_home_timeline_tweets(1))
-
-	# twitter_stream = TwitterStreamer()
-	# twitter_stream.stream_tweets(fetched_filename,hash_tag_list)
 	username = input("Enter username: ")
 
 	twitter_client = TwitterClient()
