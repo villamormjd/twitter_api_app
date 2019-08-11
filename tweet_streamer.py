@@ -87,13 +87,10 @@ class TweetAnalyzer():
 	"""
 	Functionality for analyzing and categorizing from tweets
 	"""
-
 	def tweets_to_data_frame(self,tweets):
 
 		df = pd.DataFrame(data=[tweet.text for tweet in tweets], columns=['Tweets'])
 		df['date'] = np.array([tweet.created_at for tweet in tweets])
-		
-		
 		
 		return df
 
@@ -101,11 +98,18 @@ if __name__ == "__main__":
 
 	username = input("Enter username: ")
 
+	options = int(input("Choose timeline: [1] Home [2] User "))
+
 	twitter_client = TwitterClient()
 	tweet_analyzer = TweetAnalyzer()
 	api = twitter_client.get_twitter_client_api()
 
-	tweets = api.home_timeline(screen_name=username, count=20)
+	if options == 1:
+		tweets = api.home_timeline(screen_name=username, count=20)
+	elif options == 2:
+		tweets = api.user_timeline(screen_name=username, count=20)
+	else:
+		print("Input Invalid.")
 
 	df = tweet_analyzer.tweets_to_data_frame(tweets)
 
